@@ -1,9 +1,38 @@
 .number{
     height:80px;
-    width:320px;
+    width:340px;
+    background-color: white;
+    border-radius: 10px;
 }
 
 .button{
+	background-color: #E6E6E6;
+  border: none;
+  color: black;
+  	border: none;
+  	border-radius: 5px;
     height:40px;
     width:80px;
 }
+
+.op{
+	background-color: #D8D8D8;
+	border-radius: 5px;
+  border: none;
+  color: black;
+  	border: none;
+  	
+    height:40px;
+    width:80px;
+}
+.eq{
+	background-color: #58ACFA;
+	border-radius: 5px;
+  border: none;
+  color: black;
+  	border: none;
+  	
+    height:40px;
+    width:80px;
+}
+
