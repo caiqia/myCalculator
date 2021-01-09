@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CalculatorController!{% endblock %}
+
+{% block javascripts %}
+    <script>
+    function number(n) 
+         { 
+             document.getElementById("show").value+=n 
+         } 
+       
+       function stringToList(str) {
+    
+    var result = [],temp = ''
+    for (var i = 0, e; e = str.charAt(i); i++) {
+        if ('*/+-'.indexOf(e) > -1) {
+            if (temp == '' && e == '-') {
+                temp = '-'
+            } else {
+                result.push(parseFloat(temp), e);
+                temp = ''
+            }
+        } else {
+            temp += str.charAt(i)
+        }
+    }
+    if (temp != '') {
+        result.push(parseFloat(temp))
+    }
+    return result
+}
+
+
+function result(list) {
+    
+      var newList = [],temp
+      var op = [{'*': (x, y) => x * y, '/': (x, y) => x / y},{'+': (x, y) => x + y, '-': (x, y) => x - y}]
+    for (var i = 0; i < op.length; i++) {
+        for (var j = 0; j < list.length; j++) {
+            if (op[i][list[j]]) {
+                temp = op[i][list[j]]
+            } else if (temp) {
+                newList[newList.length - 1] = temp(newList[newList.length - 1], list[j])
+                temp = null
+            } else {
+                newList.push(list[j])
+            }
+        }
+        list = newList
+        newList = []
+    }
+    if (list.length > 1) {
+        console.log('Error: error message')
+        return list
+    } else {
+        return list[0]
+    }
+}
+	function calculate() 
+         { 
+         	let a = document.getElementById("show").value
+            document.getElementById("show").value = result(stringToList(a)) 
+         }  
+    </script>
+{% endblock %}
+
+{% block body %}
+<link href="{{ asset('css/calculator.css') }}" rel="stylesheet"/>        
+        <table border="0"> 
+         <tr> 
+            <td colspan="5"><input class="number" type="text" id="show"/></td> 
+            
+         </tr> 
+         <tr> 
+            <td><input class="button" type="button" value="7" onclick="number('7')"/> </td> 
+            <td><input class="button" type="button" value="8" onclick="number('8')"/> </td> 
+            <td><input class="button" type="button" value="9" onclick="number('9')"/> </td> 
+            <td><input class="button" type="button" value="+" onclick="number('+')"/> </td> 
+         </tr> 
+         <tr> 
+            <td><input class="button" type="button" value="4" onclick="number('4')"/> </td> 
+            <td><input class="button" type="button" value="5" onclick="number('5')"/> </td> 
+            <td><input class="button" type="button" value="6" onclick="number('6')"/> </td> 
+            <td><input class="button" type="button" value="-" onclick="number('-')"/> </td> 
+         </tr> 
+         <tr> 
+            <td><input class="button" type="button" value="1" onclick="number('1')"/> </td> 
+            <td><input class="button" type="button" value="2" onclick="number('2')"/> </td> 
+            <td><input class="button" type="button" value="3" onclick="number('3')"/> </td> 
+            <td><input class="button" type="button" value="/" onclick="number('/')"/> </td> 
+         </tr> 
+         <tr> 
+            <td><input class="button" type="button" value="." onclick="number('.')"/> </td> 
+            <td><input class="button" type="button" value="0" onclick="number('0')"/> </td> 
+            <td><input class="button" type="button" value="=" onclick="calculate()"/> </td> 
+            <td><input class="button" type="button" value="*" onclick="number('*')"/> </td> 
+         </tr> 
+      </table> 
+   
+{% endblock %}
