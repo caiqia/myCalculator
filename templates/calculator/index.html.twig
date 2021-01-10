@@ -3,86 +3,16 @@
 {% block title %}Hello CalculatorController!{% endblock %}
 
 {% block javascripts %}
-    <script>
+    <script src="/js/calculator.js"></script>
 
-    function number(n) 
-         { 
-             var t = document.getElementById("second").value
-             var ans = document.getElementById("screen").value
-             if(t=="0"){
-                t=""
-             }
-             if(ans.indexOf("=")!=-1 ) {
-                if(n!="+" && n!="-" && n!="*" && n!="/") {
-                    document.getElementById("screen").value = t
-                    t=""
-                }else {
-                    document.getElementById("screen").value = t
-                }
-             }
-             document.getElementById("second").value=t+n 
-         } 
-       
-       function stringToList(str) {
-          var result = [],temp = ''
-          for (var i = 0, e; e = str.charAt(i); i++) {
-          if ('*/+-'.indexOf(e) > -1) {
-            if (temp == '' && e == '-') {
-                temp = '-'
-            } else {
-                result.push(parseFloat(temp), e);
-                temp = ''
-            }
-           } else {
-             temp += str.charAt(i)
-           }
-         }
-         if (temp != '') {
-         result.push(parseFloat(temp))
-      }
-       return result
-       }
-
-function result(list) {
-    
-      var newList = [],temp
-      var op = [{'*': (x, y) => x * y, '/': (x, y) => x / y},{'+': (x, y) => x + y, '-': (x, y) => x - y}]
-    for (var i = 0; i < op.length; i++) {
-        for (var j = 0; j < list.length; j++) {
-            if (op[i][list[j]]) {
-                temp = op[i][list[j]]
-            } else if (temp) {
-                newList[newList.length - 1] = temp(newList[newList.length - 1], list[j])
-                temp = null
-            } else {
-                newList.push(list[j])
-            }
-        }
-        list = newList
-        newList = []
-    }
-    if (list.length > 1) {
-        console.log('Error: error message')
-        return list
-    } else {
-        return list[0]
-    }
-}
-	function calculate() 
-         { 
-         	let a = document.getElementById("second").value
-            document.getElementById("screen").value = "Ans = "+a
-            document.getElementById("second").value = result(stringToList(a))
-                  
-         }  
-    </script>
 {% endblock %}
 
 {% block body %}
-                    
+        <!-- main screen to show the last calculation and second screen to show result -->           
         <div class="calculator card">
             <input type="text" id="screen" class="main"  disabled/>                   
             <input type="text" id="second" class="small" value="0" disabled/>
+        <!-- use a table to show all buttons -->
         <table border="0"> 
          <tr> 
             <td><input class="button" type="button" value="7" onclick="number('7')"/> </td> 
@@ -99,7 +29,6 @@ function result(list) {
          <tr> 
             <td><input class="button" type="button" value="1" onclick="number('1')"/> </td> 
             <td><input class="button" type="button" value="2" onclick="number('2')"/> </td>
-
             <td><input class="button" type="button" value="3" onclick="number('3')"/> </td> 
             <td><input class="op" type="button" value="-" onclick="number('-')"/> </td> 
          </tr> 

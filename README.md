@@ -3,7 +3,7 @@
 Ce projet est une calculatrice qui implimente les opérations élémentaires suivant (+ - * /)
 
 
-### Installing
+### Arborescence Fichier
 
     .
     ├── docker                         # All docker images folder
@@ -16,6 +16,9 @@ Ce projet est une calculatrice qui implimente les opérations élémentaires sui
     │   └── Controller                 # List of available controllers
     │       └── CalculatorController   # Calculator controller
     ├── templates                      # twig templates files
+    │   ├── base.html.twig             # common elements of all application
+    │   └── calculator             
+    │       └── index.html.twig        # twig for calculator application         
     ├── public                         # Documentation files (alternatively `doc`)
     │   ├── css                        # Calculator styles
     │   └── js                         # Calculator javascripts
@@ -51,6 +54,20 @@ Pour arrêter les conteneurs docker
 
 ```
 docker-compose stop
+
+```
+
+On peut aussi utiliser le serveur interne symfony pour lancer l'application
+
+```
+cd my_calculator
+composer install
+symfony server:start
+```
+
+Dans ce cas pour accèder à l'application il faut y aller sur le lien http://localhost:8000/calculate
+
+
 ```
 
 ## Exécution des tests
