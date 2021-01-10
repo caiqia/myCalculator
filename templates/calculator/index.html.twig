@@ -4,32 +4,44 @@
 
 {% block javascripts %}
     <script>
+
     function number(n) 
          { 
-             document.getElementById("show").value+=n 
+             var t = document.getElementById("second").value
+             var ans = document.getElementById("screen").value
+             if(t=="0"){
+                t=""
+             }
+             if(ans.indexOf("=")!=-1 ) {
+                if(n!="+" && n!="-" && n!="*" && n!="/") {
+                    document.getElementById("screen").value = t
+                    t=""
+                }else {
+                    document.getElementById("screen").value = t
+                }
+             }
+             document.getElementById("second").value=t+n 
          } 
        
        function stringToList(str) {
-    
-    var result = [],temp = ''
-    for (var i = 0, e; e = str.charAt(i); i++) {
-        if ('*/+-'.indexOf(e) > -1) {
+          var result = [],temp = ''
+          for (var i = 0, e; e = str.charAt(i); i++) {
+          if ('*/+-'.indexOf(e) > -1) {
             if (temp == '' && e == '-') {
                 temp = '-'
             } else {
                 result.push(parseFloat(temp), e);
                 temp = ''
             }
-        } else {
-            temp += str.charAt(i)
-        }
-    }
-    if (temp != '') {
-        result.push(parseFloat(temp))
-    }
-    return result
-}
-
+           } else {
+             temp += str.charAt(i)
+           }
+         }
+         if (temp != '') {
+         result.push(parseFloat(temp))
+      }
+       return result
+       }
 
 function result(list) {
     
@@ -58,35 +70,31 @@ function result(list) {
 }
 	function calculate() 
          { 
-         	let a = document.getElementById("show").value
-            document.getElementById("show").value = result(stringToList(a)) 
+         	let a = document.getElementById("second").value
+            document.getElementById("screen").value = "Ans = "+a
+            document.getElementById("second").value = result(stringToList(a))
+                  
          }  
     </script>
 {% endblock %}
 
 {% block body %}
-      
+                    
+        <div class="calculator card">
+            <input type="text" id="screen" class="main"  disabled/>                   
+            <input type="text" id="second" class="small" value="0" disabled/>
         <table border="0"> 
-
-         <tr> 
-            <td colspan="5"><input class="number" type="text" id="show" disabled/></td> 
-            
-         </tr> 
          <tr> 
             <td><input class="button" type="button" value="7" onclick="number('7')"/> </td> 
             <td><input class="button" type="button" value="8" onclick="number('8')"/> </td> 
             <td><input class="button" type="button" value="9" onclick="number('9')"/> </td>
-            <td><input class="op" type="button" value="/" onclick="number('/')"/> </td>  
-             
+            <td><input class="op" type="button" value="/" onclick="number('/')"/> </td>            
          </tr> 
          <tr> 
             <td><input class="button" type="button" value="4" onclick="number('4')"/> </td> 
             <td><input class="button" type="button" value="5" onclick="number('5')"/> </td>
-             <td><input class="button" type="button" value="6" onclick="number('6')"/> </td> 
-           
-            <td><input class="op" type="button" value="*" onclick="number('*')"/> </td> 
-
-            
+             <td><input class="button" type="button" value="6" onclick="number('6')"/> </td>  
+            <td><input class="op" type="button" value="*" onclick="number('*')"/> </td>            
          </tr> 
          <tr> 
             <td><input class="button" type="button" value="1" onclick="number('1')"/> </td> 
@@ -95,7 +103,6 @@ function result(list) {
             <td><input class="button" type="button" value="3" onclick="number('3')"/> </td> 
             <td><input class="op" type="button" value="-" onclick="number('-')"/> </td> 
          </tr> 
-
          <tr> 
              <td><input class="button" type="button" value="0" onclick="number('0')"/> </td> 
             <td><input class="button" type="button" value="." onclick="number('.')"/> </td>  
@@ -104,5 +111,5 @@ function result(list) {
             
          </tr> 
       </table> 
-   
+   </div>
 {% endblock %}
