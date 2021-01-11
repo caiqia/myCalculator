@@ -39,9 +39,9 @@ il y a une conteneur mariadb pour la base de données mais elle n'est pas utilis
 
 
 Première manière pour lancer l'application, il faut installer docker d'abord
-
+Aller à la racine de projet et faire:
 ```
-cd my_calculator/
+
 cd docker
 docker-compose up -d
 ```
@@ -56,10 +56,10 @@ docker-compose stop
 
 ```
 
-Deuxième manière pour lancer l'application, on peut aussi utiliser le serveur interne symfony, il faut intaller composer d'abord
+Deuxième manière pour lancer l'application, on peut aussi utiliser le serveur interne symfony, il faut intaller composer d'abord. Aller à la racine de projet et faire:
 
 ```
-cd my_calculator
+
 composer install
 symfony server:start
 ```
