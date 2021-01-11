@@ -1,6 +1,6 @@
 # Calculatrice en symfony
 
-Ce projet est une calculatrice qui implimente les opérations élémentaires suivant (+ - * /)
+Ce projet est une calculatrice qui implémente les opérations élémentaires suivant (+ - * /)
 
 
 ### Arborescence Fichier
@@ -35,13 +35,13 @@ Le projet tourne sur des conteneurs docker:
 - Conteneur php-fpm
 - Conteneur nginx 
 
-il y a une conteneur mariadb pour la base de données mais elle n'est pas utilisé pour ce projet (elle est comenté au niveau le docker compose ).
+il y a une conteneur mariadb pour la base de données mais elle n'est pas utilisé pour ce projet (elle est commenté au niveau le docker compose ).
 
 
-Pour lancer l'application
+Première manière pour lancer l'application, il faut installer docker d'abord
 
 ```
-cd my_calculator
+cd my_calculator/
 cd docker
 docker-compose up -d
 ```
@@ -56,8 +56,7 @@ docker-compose stop
 
 ```
 
-On peut aussi utiliser le serveur interne symfony pour lancer l'application
-Avec cette manière il faut intaller composer d'abord
+Deuxième manière pour lancer l'application, on peut aussi utiliser le serveur interne symfony, il faut intaller composer d'abord
 
 ```
 cd my_calculator
