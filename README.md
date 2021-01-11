@@ -42,7 +42,6 @@ Pour lancer l'application
 
 ```
 cd my_calculator
-composer install
 cd docker
 docker-compose up -d
 ```
@@ -58,6 +57,7 @@ docker-compose stop
 ```
 
 On peut aussi utiliser le serveur interne symfony pour lancer l'application
+Avec cette manière il faut intaller composer d'abord
 
 ```
 cd my_calculator
