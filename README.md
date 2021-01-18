@@ -1,6 +1,7 @@
 # Calculatrice en symfony
 
 Ce projet est une calculatrice qui implémente les opérations élémentaires suivant (+ - * /)
+
 ![](calculator.gif)
 
 
@@ -68,7 +69,7 @@ symfony server:start
 Dans ce cas pour accèder à l'application il faut y aller sur le lien http://localhost:8000/calculate
 
 
-```
+
 
 ## Exécution des tests
 
