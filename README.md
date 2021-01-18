@@ -1,6 +1,7 @@
 # Calculatrice en symfony
 
 Ce projet est une calculatrice qui implémente les opérations élémentaires suivant (+ - * /)
+![](calculator.gif)
 
 
 ### Arborescence Fichier
